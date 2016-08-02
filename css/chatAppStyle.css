@@ -29,6 +29,7 @@ overflow:hidden;
 .img-circle2{
 width: 35px;
 height: 35px;
+border-radius: 50%;
 }
 
 

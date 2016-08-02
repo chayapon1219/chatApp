@@ -33,13 +33,13 @@
     <!-- Tools bar -->
  <md-toolbar layout="row" ng-repeat="my in myUser">
      <img ng-src="http://ivansanchez.github.io/leaflet-vs-openlayers-slides/img/AngularJS-Shield-medium.png" 
-     width="60px" height="60px" style="margin-left:30px; margin-top:2.5px background-color:white;" hide-xs>
+          width="60px" height="60px" style="margin-left:30px; margin-top:2.5px background-color:white;" hide-xs>
      <h3 style="margin-left:10px" hide-xs> Angular Material - Starter App</h3>
      <span flex> </span >
-     <img style="margin-right:10px; margin-top:4px; border-radius: 50%;" ng-src="{{my.image}}" width="60px" height="60px" >
+     <img style="margin-right:10px; margin-top:15px; border-radius: 50%;" ng-src="{{my.image}}" width="40px" height="40px" >
      <md-menu md-position-mode="target-right target" layout="row" style="margin-right:20px">
          <div ng-click="$mdOpenMenu($event)">
-         <h3><?php session_start(); echo $_SESSION['name']; ?></h3>
+            <h3><?php session_start(); echo $_SESSION['name']; ?></h3>
          </div>
          <md-menu-content width="2">
             <md-menu-item>
@@ -68,12 +68,12 @@
           </md-input-container>
 
           <md-list flex="" style="margin-top:-50px">
-              <md-list-item class="md-3-line" ng-repeat="c in user | filter:search" ng-click="null">
+              <md-list-item class="md-2-line" ng-repeat="c in user | filter:search" ng-click="null">
                   <img ng-src="{{c.image}}" width="25%">
                   <div class="md-list-item-text" layout="column">
-                      <h2 style="margin-left:10px">{{c.name}} 
+                      <p style="margin-left:10px; font-size: 20px">{{c.name}} 
                           <img ng-show="{{c.onlineStatus}}" ng-src="http://i.imgur.com/eucAMTA.jpg" width="5px" height="5px" style="border-radius:50%;">
-                      </h2>
+                      </p>
                   </div>
               </md-list-item>
           </md-list> 
@@ -82,7 +82,7 @@
 
       <!-- Chat box -->
       <div layout = "column" flex>
-          <md-content flex layout-padding scroll-glue style="margin-top:10px">
+          <md-content flex layout-padding scroll-glue style="background-color:#CBDDF2;">
                <div ng-repeat="c in chat" layout="column">
                     <div layout="row" ng-if = "c.User_id != '<?php echo $_SESSION['ID']?>'">
                         <img class="img-circle2" ng-src= "{{c.image}}" style="margin-top:-15px; margin-right:20px;">
@@ -109,7 +109,6 @@
          </div>
       </div>
   </div> 
-
 
 
   <!-- Update proflies template -->
@@ -158,5 +157,6 @@
         </form>
     </md-dialog>
   </script>
+
 </body>
 </html>
