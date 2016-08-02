@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+    <head>
+        <script type = "text/javascript" src="js/lib/angular.min.js"></script>  
+        <script type="text/javascript" src="js/AngularChat.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+        <!-- Angular Material style sheet -->
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+
+      <title>Simple Chat Application</title>
+    </head>
+
+
+
+  <body ng-app="myApp">
+
+
+    <div  ng-controller="jsonCtrl">
+
+    <md-toolbar><h2><center>ANGULAR CHATTING APP</center></h2> </md-toolbar>
+     
+
+        <md-list flex="85" ng-cloak  style="margin-left: 90px">
+        <md-list-item class="md-2-line" ng-repeat="resource in chat" ng-click="null">
+          
+          <div class="md-list-item-text" layout="column"> 
+          <span ng-if="resource.user == 'No1' ">
+            <b><h3>{{resource.user}}</h3><b>
+            <h4>{{resource.text}}</h4>
+            <p style="font-size: 12px">{{resource.datetime}}</p>
+          </span>
+          </div>
+
+          <div class="md-list-item-text" layout="column"> 
+          <span ng-if="resource.user == 'No2' ">
+            <b><h3>{{resource.user}}</h3><b>
+            <h4>{{resource.text}}</h4>
+            <p style="font-size: 12px">{{resource.datetime}}</p>
+          </span>
+          </div>
+          
+        </md-list-item>
+        </md-list>
+
+
+
+ <center><md-divider flex="90"></md-divider></center>
+
+
+
+
+      <center>
+      <div layout="row" ng-cloak flex="90">
+            <div layout="row" layout-align="head center" flex="50" >
+                  <md-button class="md-raised md-primary" ng-click="addChat1()"> Send </md-button>
+                  <md-input-container md-no-float class="md-block" flex="50" layout-align="stretch"><input type="text" ng-model="chatNo1"></md-input-container>
+            </div>
+
+            <div layout="row" layout-align="end center" flex="50">
+                   <md-input-container md-no-float class="md-block" flex="50" style="margin-top: 0px;""><input type="text" ng-model="chatNo2"></md-input-container>
+                   <md-button class="md-raised md-primary" class="btn" ng-click="addChat2()">Send </md-button>
+            </div>
+      </div>
+      </center>
+
+     <!-- Send Buttons -->
+     
+
+    
+
+     </div>
+
+      
+
+
+
+ 
+
+      <!-- Angular Material requires Angular.js Libraries -->
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+
+      <!-- Angular Material Library -->
+      <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+
+           <!-- Your application bootstrap  -->
+
+
+
+ 
+  </body>
+</html>

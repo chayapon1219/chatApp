@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app="myApp" >
+    <head>
+        <script type = "text/javascript" src="js/lib/angular.min.js"></script>  
+        <script type="text/javascript" src="js/HttpTest.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">   
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <title>Simple Chat Application</title>
+    </head>
+
+
+  <body>
+    <div ng-controller="jsonCtrl" >
+    
+   <h2><center>No.2</center></h2> 
+   
+  <?php 
+  session_start();
+  echo $name = $_SESSION['name']; 
+  ?>
+
+    <table class="table table-striped" ng-repeat="c in chat" ng-init = "test = '<?php session_start(); echo $_SESSION['name']; ?>'">
+        <tr>
+            <td>{{c.name}}</td>
+            <td>{{c.Message_text}}</td>
+            <td>{{c.Message_time}}</td>
+            <td>{{count}}</td>
+       </tr>  
+       <p>{{test}}</p> 
+    </table>
+
+     <button class="btn" ng-click="addMessage1()">Send</button>
+     <input type="text" ng-model="message1"> 
+     <button class="btn" ng-click="logout()">LOGOUT</button>
+  </div>
+  </body>
+
+</html>

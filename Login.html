@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+  <script type = "text/javascript" src="js/lib/angular.min.js"></script>  
+  <script type="text/javascript" src="js/AngularChat.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+
+  <title>Simple Chat Application</title>
+
+<style>
+.font-style-1 {
+font-size: 40px;
+font-family: 'Impact';
+color: #2E2E2E;
+}
+
+.img-circle {
+border-radius: 50%;
+}
+</style>
+</head>
+
+
+<body ng-app="mdApp" ng-controller="login" layout="column" ng-cloak >
+
+<div layout="row" flex layout-align="center center">
+  <div layout="column" layout-align="center">
+    <center>
+    <img ng-src="https://lh6.googleusercontent.com/-TlY7amsfzPs/T9ZgLXXK1cI/AAAAAAABK-c/Ki-inmeYNKk/w800-h800/AngularJS-Shield-large.png"  
+     width="120" height="120">
+    </center>
+
+    <h2 class="font-style-1" style="margin-top:20px;">CHAT APPLICATION</h2>
+
+     <div>
+        <md-dialog-content layout="column">
+          <md-input-container class="md-block">
+              <label>Username</label>
+              <input ng-model="username">
+          </md-input-container>
+
+          <md-input-container class="md-block" style="margin-top: -15px">
+              <label>Password</label>
+              <input ng-model="password" type="password" required>
+          </md-input-container>
+        </md-dialog-content >   
+     </div>
+
+    <div flex>
+      <md-dialog-actions layout="column" >
+          <md-button type="button" class="md-primary md-raised" ng-click="loginAlert()" flex="10">
+              LOGIN
+          </md-button>
+        
+          <md-button type="button" class="md-warn md-raised" flex="10" ng-click="showCustom($event)"> 
+              REGISTER
+          </md-button>
+      </md-dialog-actions>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script type="text/ng-template" id="Register.tmpl.html">
+  <md-dialog style=" width:350px; height: 750px;">
+    <form ng-controller="regis">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>REGISTER</h2>
+        </div>
+      </md-toolbar>
+
+      <md-dialog-content>
+        <md-dialog-content layout="row" layout-align="center center"  >
+            <div class="md-dialog-content" flex ng-cloak >
+              <center><img class="img-circle" ng-src="{{url_image}}"  width="75" height="75"></center>
+
+              <md-input-container class="md-block">
+                  <label>URL Image</label>
+                  <input ng-model="url_image">
+              </md-input-container>
+
+              <md-input-container class="md-block">
+                  <label>Username:</label>
+                  <input ng-model="username" required>
+              </md-input-container>
+
+              <md-input-container class="md-block">
+                  <label>Password:</label>
+                  <input ng-model="password" type="password" required>
+              </md-input-container>
+
+              <md-input-container class="md-block">
+                  <label>Name:</label>
+                  <input ng-model="name" required>
+              </md-input-container>
+            </div>
+        </md-dialog-content>
+      </md-dialog-content>
+
+      <md-dialog-actions layout="row" layout-align="center center" ng-cloak style="margin-top: -40px"> 
+          <md-button type="button" class="md-primary md-raised"  aria-label="Cancel" ng-click="regisAlert($event)">
+              DONE
+          </md-button>
+
+          <md-button type="button" class="md-warn md-raised"  aria-label="Register" ng-click="reset()">
+              RESET
+          </md-button>
+      </md-dialog-actions>
+    </form>
+  </md-dialog>
+</script>
+
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+</body>
+</html>
