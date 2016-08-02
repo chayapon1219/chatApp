@@ -32,15 +32,31 @@
 
     <!-- Tools bar -->
  <md-toolbar layout="row" ng-repeat="my in myUser">
-
      <img ng-src="http://ivansanchez.github.io/leaflet-vs-openlayers-slides/img/AngularJS-Shield-medium.png" 
-     width="60px" height="60px" style="margin-left:30px; margin-top:2.5px" hide-xs>
+     width="60px" height="60px" style="margin-left:30px; margin-top:2.5px background-color:white;" hide-xs>
      <h3 style="margin-left:10px" hide-xs> Angular Material - Starter App</h3>
      <span flex> </span >
-     <img style="margin-right:10px; margin-top:2px;" ng-src="{{my.image}}" width="60px" height="60px" >
-     <h3 style="margin-right:30px" ng-click="showCustom($event)">
-     <?php session_start(); echo $_SESSION['name']; ?> </h3>
-     <img ng-src="http://icons.iconarchive.com/icons/tanitakawkaw/simple-cute/256/exit-icon.png" ng-click="logout()" width="60px" height="60px" style="margin-top:5px">
+     <img style="margin-right:10px; margin-top:4px; border-radius: 50%;" ng-src="{{my.image}}" width="60px" height="60px" >
+     <md-menu md-position-mode="target-right target" layout="row" style="margin-right:20px">
+         <div ng-click="$mdOpenMenu($event)">
+         <h3><?php session_start(); echo $_SESSION['name']; ?></h3>
+         </div>
+         <md-menu-content width="2">
+            <md-menu-item>
+                  <md-button ng-click="showCustom($event)">
+                      <md-icon md-menu-origin="" md-svg-src="svg/updateProfile.svg"></md-icon>
+                      CHANGE PROFILE
+                  </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+             <md-menu-item>
+                  <md-button ng-click="logout()">
+                      <md-icon md-menu-origin="" md-svg-src="svg/logout.svg"></md-icon>
+                      LOGOUT
+                  </md-button>
+            </md-menu-item>
+          </md-menu-content>
+     </md-menu>
  </md-toolbar>
 
 
@@ -69,13 +85,13 @@
           <md-content flex layout-padding scroll-glue style="margin-top:10px">
                <div ng-repeat="c in chat" layout="column">
                     <div layout="row" ng-if = "c.User_id != '<?php echo $_SESSION['ID']?>'">
-                        <img class="img-circle" ng-src= "{{c.image}}" style="margin-top:-15px; margin-right:20px;">
+                        <img class="img-circle2" ng-src= "{{c.image}}" style="margin-top:-15px; margin-right:20px;">
                         <md-button class="btn1">{{c.Message_text}} </md-button>
                     </div>
 
                     <div layout="row" ng-if = "c.User_id == '<?php echo $_SESSION['ID']?>'">
                         <md-button class="btn2"> {{c.Message_text}} </md-button> 
-                        <img class="img-circle" ng-src= "{{c.image}}" style="margin-top:-15px; margin-left:20px">
+                        <img class="img-circle2" ng-src= "{{c.image}}" style="margin-top:-15px; margin-left:20px">
                     </div>
                </div>
           </md-content>  
