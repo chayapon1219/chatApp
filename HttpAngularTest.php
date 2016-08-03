@@ -38,9 +38,9 @@
      <span flex> </span >
      <img style="margin-right:10px; margin-top:15px; border-radius: 50%;" ng-src="{{my.image}}" width="40px" height="40px" >
      <md-menu md-position-mode="target-right target" layout="row" style="margin-right:20px">
-         <div ng-click="$mdOpenMenu($event)">
+         <md-button ng-click="$mdOpenMenu($event)">
             <h3><?php session_start(); echo $_SESSION['name']; ?></h3>
-         </div>
+         </md-button>
          <md-menu-content width="2">
             <md-menu-item>
                   <md-button ng-click="showCustom($event)">
