@@ -29,8 +29,9 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
 
 //===============================================================
 
-   $$scope.lastChatId = 0;
-   $data = { };
+   $scope.lastChatId = 0;
+   data = { };
+   $scope.chat = new Array();
    
    $interval(function(){
       $http({
@@ -43,7 +44,7 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
                if(response.data != ''){                      
                       $scope.newChat = response.data;
                       $scope.chat = $scope.chat.concat($scope.newChat);
-                      $scope.lastChatId = parseInt($scope.newChat[$scope.newChat.length-1]['id']);
+                      $scope.lastChatId = parseInt($scope.newChat[$scope.newChat.length-1]['Message_id']);
                 }
 
 
