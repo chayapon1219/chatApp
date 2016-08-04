@@ -93,7 +93,8 @@
                <div ng-repeat="c in chat" layout="column">
                     <div layout="row" ng-if = "c.User_id != '<?php echo $_SESSION['ID']?>'">
                         <img class="img-circle2" ng-src= "{{c.image}}" style="margin-top:-15px; margin-right:20px;">
-                        <md-button class="btn1">{{c.Message_text}}  
+                        <md-button class="btn1">{{c.Message_text}}
+                        <!--div ng-if="c.Message_text.length > 50"> 5555555555555555</div-->
                         <md-tooltip md-direction="right">{{c.Message_time}}</md-tooltip>
                         </md-button>
                        
@@ -129,7 +130,7 @@
 
   <!-- Update proflies template -->
   <script type="text/ng-template" id="update.tmpl.html">
-    <md-dialog style=" width:400px;">
+    <md-dialog style=" width:400px; height:500px">
         <form ng-controller="update">
           <md-toolbar>
             <div class="md-toolbar-tools">
@@ -145,17 +146,17 @@
                       <input ng-model="c_url_image">
                   </md-input-container>
 
-                  <md-input-container class="md-block">
+                  <md-input-container class="md-block" style="margin-top:-17px">
                       <label>Username:</label>
                       <input ng-model="c_username" required>
                   </md-input-container>
 
-                  <md-input-container class="md-block" style="margin-top:-10px">
+                  <md-input-container class="md-block" style="margin-top:-17px">
                       <label>Password:</label>
                       <input ng-model="c_password" type="password">
                   </md-input-container>
 
-                  <md-input-container class="md-block">
+                  <md-input-container class="md-block" style="margin-top:-17px">
                       <label>Name:</label>
                       <input ng-model="c_name" required>
                   </md-input-container>

@@ -7,6 +7,7 @@
 	$name = $request->name;
 	$url = $request->url;
 
+	//Check not null will show Dialog alert
 	if($passwordd == '' || $usernamed == '' || $name == '') {
 		echo 'Fail to update profile';
 		mysqli_close($objConnect);

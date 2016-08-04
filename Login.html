@@ -93,9 +93,12 @@
         <md-dialog-content layout="row" layout-align="center center" 
         ng-keydown="$event.which === 13 && regisAlert($event)">
             <div class="md-dialog-content" flex ng-cloak >
-              <center><img class="img-circle" ng-src="{{url_image}}" width="100" height="100"></center>
+              <center>
+              <img class="img-circle" ng-hide="url_image != ''" ng-src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="100" height="100">
+              <img class="img-circle" ng-hide="url_image == ''" ng-src="{{url_image}}" width="100" height="100">
+              </center>
 
-              <md-input-container class="md-block" >
+              <md-input-container class="md-block">
                   <label>URL Image</label>
                   <input ng-model="url_image">
               </md-input-container>
