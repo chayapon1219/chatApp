@@ -101,19 +101,27 @@
                <span height="10px"></span>
                <div ng-repeat="c in chat" layout="column">
                     <div layout="row" ng-if = "c.User_id != '<?php echo $_SESSION['ID']?>'">
-                        <img class="img-circle2" ng-src= "{{c.image}}" style="margin-top:-15px; margin-right:20px;">
-                        <md-button class="btn1">{{c.Message_text}}
-                        <!--div ng-if="c.Message_text.length > 50"> 5555555555555555</div-->
-                        <md-tooltip md-direction="right">{{c.Message_time}}</md-tooltip>
+                        <img class="img-circle2" ng-src = "{{c.image}}" ng-show="c.isSticker != 1"
+                             style="margin-top:-15px; margin-right:20px;">
+                        <img class="img-circle2" ng-src = "{{c.image}}" ng-show="c.isSticker == 1"
+                             style="margin-top:95px; margin-right:20px;">
+                        <md-button class="btn1" ng-if ="c.isSticker == 0"> {{c.Message_text}}
+                             <md-tooltip md-direction="right">{{c.Message_time}}</md-tooltip>
                         </md-button>
+
+                        <img ng-src="{{c.Message_text}}" class="sticker1" ng-if ="c.isSticker == 1"> 
                     </div>
 
-                    <div layout="row" ng-if = "c.User_id == '<?php echo $_SESSION['ID']?>'">
-                        <md-button class="btn2"> {{c.Message_text}} 
-                         <md-tooltip md-direction="left">{{c.Message_time}}</md-tooltip>
-                         </md-button> 
-                        <img class="img-circle2" ng-src= "{{c.image}}" style="margin-top:-15px; margin-left:20px">
-                       
+
+                    <div layout="row" ng-if = "c.User_id == '<?php echo $_SESSION['ID']?>'">         
+                        <img ng-src="{{c.Message_text}}" class="sticker2" ng-if ="c.isSticker == 1"> 
+                        <md-button class="btn2" ng-if ="c.isSticker != 1"> {{c.Message_text}} 
+                             <md-tooltip md-direction="left">{{c.Message_time}}</md-tooltip>
+                        </md-button>
+                        <img ng-show="c.isSticker != 1" class="img-circle2" ng-src= "{{c.image}}" 
+                             style="margin-top:-15px; margin-left:20px">
+                        <img ng-show="c.isSticker == 1" class="img-circle2" ng-src= "{{c.image}}" 
+                             style="margin-top:95px; margin-left:20px">
                     </div>
                </div>
           </md-content>  

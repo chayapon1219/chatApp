@@ -5,7 +5,8 @@
 
 		$arr = array();
 		$sql = mysqli_query($objConnect,"
-			SELECT message.Message_id, message.Message_text, message.Message_time, user.User_id, user.image, user.name
+			SELECT message.Message_id, message.Message_text,message.isSticker, message.Message_time, 
+				   user.User_id, user.image, user.name
 			FROM message
 			INNER JOIN user
 			ON user.User_id=message.User_id AND message.Message_id > '$last_id'

@@ -27,6 +27,27 @@ font-family: 'Mitr', sans-serif;
 text-transform: none;
 }
 
+.sticker1 {
+	width: 230px;
+	height: 230px;
+	margin-top:  5px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-left: 0px;
+}
+
+.sticker2 {
+	width: 230px;
+	height: 230px;
+	margin-top:  5px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: 10px;
+}
+
+
+
+
 body {
 	overflow:hidden;
 }
