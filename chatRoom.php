@@ -116,7 +116,7 @@
              <div layout="row" ng-cloak flex="100" layout-align="end">
                   <div layout="row" layout-align="center center" flex="100" >     
                         <md-input-container md-no-float class="md-block" flex="95" layout-align="stretch">
-                            <input type="text" ng-model="message1" style="margin-top: 10px; font-family: 'Mitr', sans-serif;" ng-keydown="$event.which === 13 && addMessage1()"> 
+                            <input type="text" ng-model="message1" style="margin-top: 10px; font-family: 'Mitr', sans-serif;" ng-keydown="$event.which === 13 && addMessage1()" placeholder="Type you Messages!"> 
                         </md-input-container>
                         <md-button class="md-raised md-primary" ng-click="addMessage1()" flex="10"> SEND 
                             <md-icon style="margin-left:5px" md-svg-src="svg/send2.svg"></md-icon>

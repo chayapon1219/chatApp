@@ -30,13 +30,26 @@
     .img-circle {
     border-radius: 50%;
     }
+
+    #wallpaper {
+      background: rgba(212,228,239,1);
+background: -moz-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+background: radial-gradient(ellipse at center, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
+    }
+
   </style>
 </head>
 
-<body ng-app="mdApp" ng-controller="login" layout="column" ng-cloak >
+<body ng-app="mdApp" ng-controller="login" layout="column" id="wallpaper">
 
 <div layout="row" flex layout-align="center center">
-  <div layout="column" layout-align="center">
+  <div layout="column" layout-align="center" class="md-whiteframe-2dp" 
+       style="padding:35px; background-color: rgba(255, 255, 255, 0.3);">
     <center>
         <img ng-src="https://lh6.googleusercontent.com/-TlY7amsfzPs/T9ZgLXXK1cI/AAAAAAABK-c/Ki-inmeYNKk/w800-h800/AngularJS-Shield-large.png"  
          width="120" height="120">

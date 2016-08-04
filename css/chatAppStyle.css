@@ -9,6 +9,7 @@ margin-top: -15px;
 margin-right: auto;
 margin-left: 0px;
 font-family: 'Mitr', sans-serif;
+text-transform: none;
 }
 
 .btn2 {
@@ -23,6 +24,7 @@ margin-top: -15px;
 margin-left: auto;
 margin-right: 0px; 
 font-family: 'Mitr', sans-serif;
+text-transform: none;
 }
 
 body {
