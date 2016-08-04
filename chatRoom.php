@@ -93,12 +93,18 @@
                <div ng-repeat="c in chat" layout="column">
                     <div layout="row" ng-if = "c.User_id != '<?php echo $_SESSION['ID']?>'">
                         <img class="img-circle2" ng-src= "{{c.image}}" style="margin-top:-15px; margin-right:20px;">
-                        <md-button class="btn1">{{c.Message_text}} </md-button>
+                        <md-button class="btn1">{{c.Message_text}}  
+                        <md-tooltip md-direction="right">{{c.Message_time}}</md-tooltip>
+                        </md-button>
+                       
                     </div>
 
                     <div layout="row" ng-if = "c.User_id == '<?php echo $_SESSION['ID']?>'">
-                        <md-button class="btn2"> {{c.Message_text}} </md-button> 
+                        <md-button class="btn2"> {{c.Message_text}} 
+                         <md-tooltip md-direction="left">{{c.Message_time}}</md-tooltip>
+                         </md-button> 
                         <img class="img-circle2" ng-src= "{{c.image}}" style="margin-top:-15px; margin-left:20px">
+                       
                     </div>
                </div>
           </md-content>  

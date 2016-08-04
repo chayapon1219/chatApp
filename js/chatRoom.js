@@ -47,7 +47,6 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
                       $scope.lastChatId = parseInt($scope.newChat[$scope.newChat.length-1]['Message_id']);
                 }
 
-
       },function errorCallback(response) {
                //console.error(response.data);
       });
