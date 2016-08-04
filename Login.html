@@ -5,9 +5,10 @@
   <script type = "text/javascript" src="js/lib/angular.min.js"></script>  
   <script type="text/javascript" src="js/Login.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/loginPage.css"> 
+  <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
   <!-- Angular Material style sheet -->
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
-
 
   <!-- Angular Material requires Angular.js Libraries -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
@@ -17,32 +18,6 @@
 
   <!-- Angular Material Library -->
   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
-
-  <!-- Font -->
-
-  <style>
-    .font-style-1 {
-    font-size: 40px;
-    font-family: 'Impact';
-    color: #2E2E2E;
-    }
-
-    .img-circle {
-    border-radius: 50%;
-    }
-
-    #wallpaper {
-      background: rgba(212,228,239,1);
-background: -moz-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
-background: -webkit-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -o-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -ms-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: radial-gradient(ellipse at center, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
-    }
-
-  </style>
 </head>
 
 <body ng-app="mdApp" ng-controller="login" layout="column" id="wallpaper">
@@ -55,29 +30,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', end
          width="120" height="120">
     </center>
 
-    <h2 class="font-style-1" style="margin-top:20px;">CHAT APPLICATION</h2>
+    <h2 class="font-style-1" style="margin-top:5px; color:#2E2E2E;">CHAT  APPLICATION</h2>
         
     <!-- Input box -->
      <div>
-        <md-dialog-content layout="column" ng-keydown="$event.which === 13 && loginAlert()">
+        <md-dialog-content layout="column" style="margin-top:-20px; padding-top:20px" ng-keydown="$event.which === 13 && loginAlert()">
           <md-input-container class="md-block">
               <md-icon md-svg-src="svg/person.svg"></md-icon>
-              <label>Username</label>
-              <input ng-model="username" >
+              <label class="labelFont"> Username </label>
+              <input class="inputFont" ng-model="username">
           </md-input-container>
 
           <md-input-container class="md-block" style="margin-top: -15px;">
               <md-icon md-svg-src="svg/lock.svg"></md-icon>
-              <label>Password</label>
-              <input ng-model="password" type="password" required>
+              <label class="labelFont">Password</label>
+              <input ng-model="password" type="password">
           </md-input-container>
         </md-dialog-content >   
      </div>
       
     <!-- Button -->
-    <div flex>
+    <div flex >
       <md-dialog-actions layout="column" >
-          <md-button type="button" class="md-primary md-raised" ng-click="loginAlert()" flex="10">
+          <md-button type="button" class="md-primary md-raised" ng-click="loginAlert()" flex="10" 
+                    ng-disabled="password == '' || username == '' ">
               LOGIN
           </md-button>
         
@@ -88,8 +64,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', end
     </div>
   </div>
 </div>
-
-
 
   <!-- Template register -->
 
@@ -135,7 +109,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', end
       </md-dialog-content>
 
       <md-dialog-actions layout="row" layout-align="center center" ng-cloak style="margin-top: -40px"> 
-          <md-button type="button" class="md-primary md-raised"  aria-label="Cancel" ng-click="regisAlert($event)">
+          <md-button type="button" class="md-primary md-raised" aria-label="Cancel" ng-click="regisAlert($event)"
+                     ng-disabled="password == '' || name == '' || password == ''">
               DONE
           </md-button>
 

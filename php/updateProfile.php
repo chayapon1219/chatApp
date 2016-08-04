@@ -9,10 +9,11 @@
 
 	//Check not null will show Dialog alert
 	if($passwordd == '' || $usernamed == '' || $name == '') {
-		echo 'Fail to update profile';
+		echo 'Please enter all your account information.';
 		mysqli_close($objConnect);
 	} else {
 
+	
 	$passwordd = md5($passwordd);
 	$_SESSION['name'] = $name;
 	$strSQL = "UPDATE user SET username='$usernamed', password='$passwordd', image='$url', name='$name' WHERE User_id = '".$_SESSION['ID']."' ";

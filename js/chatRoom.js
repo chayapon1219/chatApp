@@ -1,9 +1,31 @@
 var myApp  =  angular.module('myApp', ['ngMaterial','luegg.directives']);
 
-myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSidenav, $window){
+myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSidenav, $window, $mdToast){
 
 
 //=================================================================
+
+
+
+    $scope.size = 16;
+    $scope.fontSize = "font-size-" + $scope.size;
+
+    $scope.increase = function(){
+        //Higher limit
+        if($scope.size < 22){
+            $scope.size++;
+            $scope.fontSize = "font-size-" + $scope.size;
+        }
+    };
+
+    $scope.decrease = function(){
+        //Lower limit
+        if($scope.size > 16){
+            $scope.size--;
+            $scope.fontSize = "font-size-" + $scope.size;
+        }
+    };
+  
 
   
 
@@ -79,7 +101,9 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
 
     }).then(function successCallback(response) {
              //console.log(response.data);
-             $scope.myUser= response.data;
+            $scope.myUser= response.data;
+            $mdToast.show($mdToast.simple().textContent('Welcome to chatroom! ..... ' + $scope.myUser[0][3] ));
+ 
     },function errorCallback(response) {
              //console.error(response.data);
     });
@@ -192,7 +216,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
                   $mdDialog.alert()
                     .parent(angular.element(document.querySelector('#popupContainer')))
                     .clickOutsideToClose(true)
-                    .title('STATUS')
+                    .title('WARNING')
                     .textContent($scope.profile)
                     .ok(' Done ')
                     .targetEvent(ev)

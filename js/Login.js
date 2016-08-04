@@ -30,7 +30,7 @@ myApp.controller('login', function($scope, $http, $mdDialog) {
         $mdDialog.alert()
           .parent(angular.element(document.querySelector('#popupContainer')))
           .clickOutsideToClose(true)
-          .title('STATUS')
+          .title('Login status')
           .textContent($scope.status)
           .ok(' Done ')
           .targetEvent(ev)); 

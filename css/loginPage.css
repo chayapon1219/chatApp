@@ -1,0 +1,31 @@
+  .font-style-1 {
+    font-size: 40px;
+    font-family: 'Impact';
+    color: #2E2E2E;
+  }
+
+  .img-circle {
+    border-radius: 50%;
+}
+
+  #wallpaper {
+    background: rgba(182,222,237,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(182,222,237,1) 0%, rgba(108,178,204,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(182,222,237,1)), color-stop(100%, rgba(108,178,204,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(182,222,237,1) 0%, rgba(108,178,204,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(182,222,237,1) 0%, rgba(108,178,204,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(182,222,237,1) 0%, rgba(108,178,204,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(182,222,237,1) 0%, rgba(108,178,204,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6deed', endColorstr='#6cb2cc', GradientType=1 );
+}
+
+  .labelFont {
+    font-family: 'Mitr', sans-serif;
+    font-size:17px;
+    color:#0B173B;
+  }
+
+  .inputFont {
+  font-family: 'Mitr', sans-serif;
+  font-size:15px;
+  }

@@ -37,10 +37,19 @@
      <h3 style="margin-left:10px" hide-xs> Angular Material - Starter App</h3>
      <md-button class="md-icon-button md-primary" style="margin-top:12px" show-xs hide-gt-xs>
          <md-icon md-svg-icon="svg/menu2.svg" ng-click="toggleLeft()"></md-icon>
-    </md-button>
-     <span flex> </span >
+     </md-button>
+     <span flex> </span>
+     <div style="margin-top:20px; margin-right:5px;" layout="row" hide-xs>
+     <md-button class="md-icon-button md-primary" ng-click="increase()">
+          <md-icon md-svg-icon="svg/plus2.svg" ></md-icon>
+     </md-button>
+     <md-button class="md-icon-button md-primary" ng-click="decrease()">
+          <md-icon md-svg-icon="svg/minus2.svg"  </md-icon>
+     </md-button>
+     </div>
      <img style="margin-right:10px; margin-top:15px; border-radius: 50%;" 
           ng-src="{{my.image}}" width="40px" height="40px" >
+
      <md-menu md-position-mode="target-right target" layout="row" style="margin-right:20px; margin-top:-7px">
          <md-button class="class1" ng-click="$mdOpenMenu($event)">
             <h3><?php session_start(); echo $_SESSION['name']; ?></h3>
@@ -88,7 +97,7 @@
 
       <!-- Chat box -->
       <div layout = "column" flex >
-          <md-content flex layout-padding scroll-glue style="background-color:#CBDDF2;">
+          <md-content flex layout-padding scroll-glue style="background-color:#CBDDF2;" ng-class="fontSize">
                <span height="10px"></span>
                <div ng-repeat="c in chat" layout="column">
                     <div layout="row" ng-if = "c.User_id != '<?php echo $_SESSION['ID']?>'">
@@ -114,7 +123,10 @@
       <!-- Button under chat box -->
         <div flex="10">    
              <div layout="row" ng-cloak flex="100" layout-align="end">
-                  <div layout="row" layout-align="center center" flex="100" >     
+                  <div layout="row" layout-align="center center" flex="100" >  
+                        <md-button class="md-icon-button md-primary" aria-label="Settings">
+                            <md-icon md-svg-icon="svg/emoticon2.svg"></md-icon>
+                        </md-button>   
                         <md-input-container md-no-float class="md-block" flex="95" layout-align="stretch">
                             <input type="text" ng-model="message1" style="margin-top: 10px; font-family: 'Mitr', sans-serif;" ng-keydown="$event.which === 13 && addMessage1()" placeholder="Type you Messages!"> 
                         </md-input-container>
