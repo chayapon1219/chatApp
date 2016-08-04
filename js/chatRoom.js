@@ -6,7 +6,6 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
 //=================================================================
 
 
-
     $scope.size = 16;
     $scope.fontSize = "font-size-" + $scope.size;
 
@@ -249,3 +248,71 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
 
 
 
+//===========================================================================================================
+
+
+ myApp.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet, $mdToast) {
+  
+
+  $scope.items = [
+    { name: 'Hello', icon: 'https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-128.png'},
+    { name: 'Sad', icon: 'mail' },
+    { name: 'Happy', icon: 'message' },
+    { name: 'Smile', icon: 'copy' },
+    { name: 'Angry', icon: 'facebook' },
+    { name: 'What', icon: 'twitter' },
+  ];
+
+
+  var gridTemplate = 
+  '<md-bottom-sheet class="md-grid">\
+    <md-list>\
+      <md-item ng-repeat="item in items">\
+        <md-button class="md-grid-item-content" ng-click="listItemClick($index)">\
+            <img ng-src="{{item.icon}}">\
+          <p class="md-grid-text"> {{ item.name }} </p>\
+        </md-button>\
+      </md-item>\
+    </md-list>\
+   </md-bottom-sheet>';
+
+
+  $scope.showGridBottomSheet = function($event) {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      template: gridTemplate,
+      controller: 'GridBottomSheetCtrl',
+      targetEvent: $event
+    }).then(function(clickedItem) {
+       //$mdToast.show($mdToast.simple().textContent(clickedItem.name + ' clicked!'));
+
+            $http({
+            method: 'POST',
+            url: 'php/sendSticker.php',
+            data : data,
+            headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function successCallback(response) {
+                     console.log(response.data);
+                     $scope.profile = response.data;
+                     $scope.flag;
+                        $mdDialog.show(
+                        $mdDialog.alert()
+                          .parent(angular.element(document.querySelector('#popupContainer')))
+                          .clickOutsideToClose(true)
+                          .title('WARNING')
+                          .textContent($scope.profile)
+                          .ok(' Done ')
+                          .targetEvent(ev)
+                      )
+            },function errorCallback(response) {
+                     console.error(response.data);               
+            });
+    });
+  }
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+
+});

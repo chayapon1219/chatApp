@@ -106,7 +106,6 @@
                         <!--div ng-if="c.Message_text.length > 50"> 5555555555555555</div-->
                         <md-tooltip md-direction="right">{{c.Message_time}}</md-tooltip>
                         </md-button>
-                       
                     </div>
 
                     <div layout="row" ng-if = "c.User_id == '<?php echo $_SESSION['ID']?>'">
@@ -124,7 +123,8 @@
         <div flex="10">    
              <div layout="row" ng-cloak flex="100" layout-align="end">
                   <div layout="row" layout-align="center center" flex="100" >  
-                        <md-button class="md-icon-button md-primary" aria-label="Settings">
+                        <md-button class="md-icon-button md-primary" ng-click="showGridBottomSheet()" 
+                                   ng-controller="GridBottomSheetCtrl">
                             <md-icon md-svg-icon="svg/emoticon2.svg"></md-icon>
                         </md-button>   
                         <md-input-container md-no-float class="md-block" flex="95" layout-align="stretch">
