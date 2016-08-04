@@ -5,6 +5,7 @@
 	$user_id = $request->username;
 	$pass_id = $request->password;
 
+	$pass_id = md5($pass_id);
 	$strSQL = "SELECT * FROM user WHERE username = '".$user_id."'and password = '".$pass_id."'";
 	$objQuery = mysqli_query($objConnect, $strSQL);
 	$objResult = mysqli_fetch_array($objQuery);

@@ -7,6 +7,7 @@
 	$name = $request->name;
 	$url = $request->url;
 
+
 	//
 	$flag = "1";
 	$strSQLselect = "SELECT username FROM user";
@@ -22,6 +23,7 @@
 		echo "Username already have";
 	}
 	else {
+		$passwordd = md5($passwordd);
 		$sql = mysqli_query($objConnect,"INSERT INTO user VALUES ('','$usernamed','$passwordd','$name','$url','0')");
 		if($sql) echo "Register Success!";
 	}
