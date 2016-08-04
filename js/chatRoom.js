@@ -1,7 +1,14 @@
 var myApp  =  angular.module('myApp', ['ngMaterial','luegg.directives']);
 
-myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSidenav){
+myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSidenav, $window){
 
+
+//=================================================================
+
+  
+
+//================================================================
+// Sidenav
 
   $scope.isOpen = function() { 
     return $mdSidenav('left').isOpen(); 
@@ -22,19 +29,23 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
 
 //===============================================================
 
-
-   data = { };
+   $$scope.lastChatId = 0;
+   $data = { };
    
    $interval(function(){
       $http({
         method: 'POST',
         url: 'php/getMessage.php',
-        data : data,
+        data : $scope.lastChatId,
         headers : {'Content-Type': 'application/x-www-form-urlencoded'}
 
       }).then(function successCallback(response) {
-               //console.log(response.data);
-               $scope.chat= response.data;
+               if(response.data != ''){                      
+                      $scope.newChat = response.data;
+                      $scope.chat = $scope.chat.concat($scope.newChat);
+                      $scope.lastChatId = parseInt($scope.newChat[$scope.newChat.length-1]['id']);
+                }
+
 
       },function errorCallback(response) {
                //console.error(response.data);
@@ -148,7 +159,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
          $scope.profile = response.data;
 
          $scope.c_username = $scope.profile[0]['username'];
-         $scope.c_password = $scope.profile[0]['password'];
+         $scope.c_password = '';
          $scope.c_name = $scope.profile[0]['name'];
          $scope.c_url_image = $scope.profile[0]['image'];
 
@@ -159,7 +170,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
 //================================================
 
   $scope.updateAlert = function(ev) {
-
+  
       data = {
             'username' :  $scope.c_username,
             'password' : $scope.c_password,
@@ -172,7 +183,6 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
       url: 'php/updateProfile.php',
       data : data,
       headers : {'Content-Type': 'application/x-www-form-urlencoded'}
-
       }).then(function successCallback(response) {
                console.log(response.data);
                $scope.profile = response.data;
@@ -182,7 +192,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
                     .parent(angular.element(document.querySelector('#popupContainer')))
                     .clickOutsideToClose(true)
                     .title('STATUS')
-                    .textContent('Profile Changed!')
+                    .textContent($scope.profile)
                     .ok(' Done ')
                     .targetEvent(ev)
                 )

@@ -7,6 +7,12 @@
 	$name = $request->name;
 	$url = $request->url;
 
+	if($passwordd == '' || $usernamed == '' || $name == '') {
+		echo 'Fail to update profile';
+		mysqli_close($objConnect);
+	} else {
+
+	$passwordd = md5($passwordd);
 	$_SESSION['name'] = $name;
 	$strSQL = "UPDATE user SET username='$usernamed', password='$passwordd', image='$url', name='$name' WHERE User_id = '".$_SESSION['ID']."' ";
 	$objQuery = mysqli_query($objConnect, $strSQL);
@@ -15,5 +21,7 @@
 	if($objQuery) {
 		echo 'SUCCESS !!';		
 		session_write_close();
+	}
+	
 	}
 ?>

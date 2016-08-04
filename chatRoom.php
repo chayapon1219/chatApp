@@ -89,6 +89,7 @@
       <!-- Chat box -->
       <div layout = "column" flex >
           <md-content flex layout-padding scroll-glue style="background-color:#CBDDF2;">
+               <span height="10px"></span>
                <div ng-repeat="c in chat" layout="column">
                     <div layout="row" ng-if = "c.User_id != '<?php echo $_SESSION['ID']?>'">
                         <img class="img-circle2" ng-src= "{{c.image}}" style="margin-top:-15px; margin-right:20px;">
@@ -122,7 +123,7 @@
 
   <!-- Update proflies template -->
   <script type="text/ng-template" id="update.tmpl.html">
-    <md-dialog style=" width:400px; height: 100%; ">
+    <md-dialog style=" width:400px;">
         <form ng-controller="update">
           <md-toolbar>
             <div class="md-toolbar-tools">
@@ -143,9 +144,9 @@
                       <input ng-model="c_username" required>
                   </md-input-container>
 
-                  <md-input-container class="md-block">
+                  <md-input-container class="md-block" style="margin-top:-10px">
                       <label>Password:</label>
-                      <input ng-model="c_password" type="password" required>
+                      <input ng-model="c_password" type="password">
                   </md-input-container>
 
                   <md-input-container class="md-block">
