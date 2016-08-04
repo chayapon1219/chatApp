@@ -1,14 +1,34 @@
-
 var myApp  =  angular.module('myApp', ['ngMaterial','luegg.directives']);
 
-myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog){
+myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSidenav){
+
+
+  $scope.isOpen = function() { 
+    return $mdSidenav('left').isOpen(); 
+  };
+
+  $scope.toggle = function() { 
+    $mdSidenav('left').toggle() 
+  };
+
+  $scope.toggleLeft = function() {
+  $mdSidenav('left').toggle()
+                    .then(function(){
+                        $log.debug("toggle left is done");
+                    });
+  };
+
+
+
+//===============================================================
+
 
    data = { };
    
    $interval(function(){
       $http({
         method: 'POST',
-        url: 'php/getUser.php',
+        url: 'php/getMessage.php',
         data : data,
         headers : {'Content-Type': 'application/x-www-form-urlencoded'}
 
@@ -31,7 +51,7 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog){
 
       }).then(function successCallback(response) {
                //console.log(response.data);
-               $scope.user= response.data;
+               $scope.users= response.data;
 
       },function errorCallback(response) {
                //console.error(response.data); 

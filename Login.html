@@ -3,7 +3,7 @@
 <head>
   <title>Simple Chat Application</title>
   <script type = "text/javascript" src="js/lib/angular.min.js"></script>  
-  <script type="text/javascript" src="js/AngularChat.js"></script>
+  <script type="text/javascript" src="js/Login.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <!-- Angular Material style sheet -->
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
@@ -17,6 +17,8 @@
 
   <!-- Angular Material Library -->
   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+  <!-- Font -->
 
   <style>
     .font-style-1 {
@@ -44,13 +46,15 @@
         
     <!-- Input box -->
      <div>
-        <md-dialog-content layout="column">
+        <md-dialog-content layout="column" ng-keydown="$event.which === 13 && loginAlert()">
           <md-input-container class="md-block">
+              <md-icon md-svg-src="svg/person.svg"></md-icon>
               <label>Username</label>
-              <input ng-model="username">
+              <input ng-model="username" >
           </md-input-container>
 
-          <md-input-container class="md-block" style="margin-top: -15px">
+          <md-input-container class="md-block" style="margin-top: -15px;">
+              <md-icon md-svg-src="svg/lock.svg"></md-icon>
               <label>Password</label>
               <input ng-model="password" type="password" required>
           </md-input-container>
@@ -85,12 +89,13 @@
         </div>
       </md-toolbar>
 
-      <md-dialog-content>
-        <md-dialog-content layout="row" layout-align="center center"  >
+      <md-dialog-content >
+        <md-dialog-content layout="row" layout-align="center center" 
+        ng-keydown="$event.which === 13 && regisAlert($event)">
             <div class="md-dialog-content" flex ng-cloak >
-              <center><img class="img-circle" ng-src="{{url_image}}"  width="100" height="100"></center>
+              <center><img class="img-circle" ng-src="{{url_image}}" width="100" height="100"></center>
 
-              <md-input-container class="md-block">
+              <md-input-container class="md-block" >
                   <label>URL Image</label>
                   <input ng-model="url_image">
               </md-input-container>

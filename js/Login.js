@@ -24,7 +24,7 @@ myApp.controller('login', function($scope, $http, $mdDialog) {
         
         $scope.status = response.data;
         if($scope.status == $scope.username) { 
-            window.location.href = "HttpAngularTest.php"; 
+            window.location.href = "chatRoom.php"; 
         } else {
         $mdDialog.show(
         $mdDialog.alert()
@@ -32,7 +32,6 @@ myApp.controller('login', function($scope, $http, $mdDialog) {
           .clickOutsideToClose(true)
           .title('STATUS')
           .textContent($scope.status)
-          .ariaLabel('Alert Dialog Demo')
           .ok(' Done ')
           .targetEvent(ev)); 
           }
@@ -45,7 +44,9 @@ myApp.controller('login', function($scope, $http, $mdDialog) {
               });
 
         },function errorCallback(response) {
-          console.error(response.data);               
+          console.error(response.data);    
+          $scope.username = '';  
+          $scope.password = '';           
         });
   };
 
