@@ -18,7 +18,7 @@
 	$_SESSION['name'] = $name;
 	$strSQL = "UPDATE user SET username='$usernamed', password='$passwordd', image='$url', name='$name' WHERE User_id = '".$_SESSION['ID']."' ";
 	$objQuery = mysqli_query($objConnect, $strSQL);
-	$objResult = mysqli_fetch_array($objQuery);
+	//$objResult = mysqli_fetch_array($objQuery);
 
 	if($objQuery) {
 		echo 'SUCCESS !!';		

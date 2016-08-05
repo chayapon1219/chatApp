@@ -134,12 +134,15 @@
                   <div layout="row" layout-align="center center" flex="100" >  
                         <md-button class="md-icon-button md-primary" ng-click="showGridBottomSheet()" 
                                    ng-controller="GridBottomSheetCtrl">
-                            <md-icon md-svg-icon="svg/emoticon2.svg"></md-icon>
+                              <md-icon md-svg-icon="svg/emoticon2.svg"></md-icon>
                         </md-button>   
                         <md-input-container md-no-float class="md-block" flex="95" layout-align="stretch">
-                            <input type="text" ng-model="message1" style="margin-top: 10px; font-family: 'Mitr', sans-serif;" ng-keydown="$event.which === 13 && addMessage1()" placeholder="Type you Messages!"> 
+                            <input type="text" ng-model="message1" style="margin-top: 10px; font-family: 'Mitr', sans-serif;" ng-keydown="$event.which === 13 && addMessage1()" placeholder="Type you Messages!" 
+                             ng-change="countMessage()"> 
                         </md-input-container>
-                        <md-button class="md-raised md-primary" ng-click="addMessage1()" flex="10"> SEND 
+                        <div>{{chatCount}}/50</div>
+                        <md-button class="md-raised md-primary" ng-click="addMessage1()" flex="10" 
+                                   ng-disabled="chatCount > 50"> SEND 
                             <md-icon style="margin-left:5px" md-svg-src="svg/send2.svg"></md-icon>
                         </md-button>
                   </div>
@@ -151,7 +154,7 @@
 
   <!-- Update proflies template -->
   <script type="text/ng-template" id="update.tmpl.html">
-    <md-dialog style=" width:400px; height:500px">
+    <md-dialog style=" width:350px; max-height: 750px;">
         <form ng-controller="update">
           <md-toolbar>
             <div class="md-toolbar-tools">
@@ -161,30 +164,45 @@
 
           <md-dialog-content layout="row" layout-align="center center">
             <div class="md-dialog-content" flex ng-cloak >
-                  <center><img class="img-circle" ng-src="{{c_url_image}}"  width="75" height="75"></center>
-                  <md-input-container class="md-block">
-                      <label>URL Image</label>
-                      <input ng-model="c_url_image">
-                  </md-input-container>
+                <center>
+                    <div ng-hide="c_url_image != ''">
+                        <md-button class="md-icon-button md-primary" ng-click="previousAvatar()">
+                            <md-icon md-svg-icon="svg/left.svg"></md-icon>
+                        </md-button>
+                        <img class="img-circle" ng-src="{{avatars[indexAvatar].url}}" 
+                             width="100" height="100">
+                        <md-button class="md-icon-button md-primary" ng-click="nextAvatar()">
+                            <md-icon md-svg-icon="svg/right.svg" ></md-icon>
+                        </md-button>
+                    </div>
+                    <img class="img-circle" ng-hide="c_url_image == ''" ng-src="{{c_url_image}}" width="100" height="100">
+                </center>
+                <md-switch class="md-primary" ng-model="data.cb1" aria-label="Switch 1" style="margin-left:35px">
+                    Use url image for AVATAR.
+                </md-switch>
+                <md-input-container class="md-block" ng-show="data.cb1">
+                    <label>URL Image</label>
+                    <input ng-model="c_url_image">
+                </md-input-container>
 
-                  <md-input-container class="md-block" style="margin-top:-17px">
-                      <label>Username:</label>
-                      <input ng-model="c_username" required>
-                  </md-input-container>
+                <md-input-container class="md-block" >
+                    <label>Username:</label>
+                    <input ng-model="c_username" required>
+                </md-input-container>
 
-                  <md-input-container class="md-block" style="margin-top:-17px">
-                      <label>Password:</label>
-                      <input ng-model="c_password" type="password">
-                  </md-input-container>
+                <md-input-container class="md-block" >
+                    <label>Password:</label>
+                    <input ng-model="c_password" type="password">
+                </md-input-container>
 
-                  <md-input-container class="md-block" style="margin-top:-17px">
-                      <label>Name:</label>
-                      <input ng-model="c_name" required>
-                  </md-input-container>
+                <md-input-container class="md-block" >
+                    <label>Name:</label>
+                    <input ng-model="c_name" required>
+                </md-input-container>
             </div>
           </md-dialog-content>
 
-          <md-dialog-actions layout="row" layout-align="center center" ng-cloak style="margin-top: -40px"> 
+          <md-dialog-actions layout="row" layout-align="center center" ng-cloak"> 
               <md-button type="button" class="md-primary md-raised" ng-click="updateAlert($event)">
                   DONE
               </md-button>

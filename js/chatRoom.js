@@ -128,24 +128,35 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
 //================================================
 
   //Send Meesages
+
   $scope.Message1 = '';
   $scope.addMessage1 = function() {
-      data = { 
+      if($scope.chatCount <= 80){
+          data = { 
          'message' : $scope.message1
+          };
+
+            $http({
+              method: 'POST',
+              url: 'php/Message.php',
+              data : data,
+              headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+
+            }).then(function successCallback(response) {
+              $scope.message1='';
+
+            },function errorCallback(response) {
+            });
       };
+      }
+ 
 
-      $http({
-        method: 'POST',
-        url: 'php/Message.php',
-        data : data,
-        headers : {'Content-Type': 'application/x-www-form-urlencoded'}
-
-      }).then(function successCallback(response) {
-        $scope.message1='';
-
-      },function errorCallback(response) {
-      });
-};
+//================================================
+  $scope.chatCount = 0;
+  //Count number of charactor
+  $scope.countMessage = function(){
+        $scope.chatCount = $scope.message1.length;
+        };
 
 //================================================
 
@@ -170,7 +181,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
   $scope.c_username = '';
   $scope.c_password = '';
   $scope.c_name = '';
-  $scope.c_url_image = ''
+  $scope.c_url_image = '';
 
   //Get all data for use to update my profile
   $http({
@@ -191,10 +202,39 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
       });
 
 //================================================
+  
+    //Choose avatars 
+  $scope.avatars = [
+    { url: 'img/avatars/0.png' },
+    { url: 'img/avatars/1.png' },
+    { url: 'img/avatars/2.png'  },
+    { url: 'img/avatars/3.png'  },
+    { url: 'img/avatars/4.png'  },
+    { url: 'img/avatars/5.png'  },
+    { url: 'img/avatars/6.png'  },
+    { url: 'img/avatars/7.png'  },
+    { url: 'img/avatars/8.png'  },
+    { url: 'img/avatars/9.png'  },
+    { url: 'img/avatars/10.png'  }
+  ];
+
+  $scope.indexAvatar = 0;
+
+  $scope.nextAvatar = function(ev) {
+    if($scope.indexAvatar < 10)
+    $scope.indexAvatar = $scope.indexAvatar + 1;
+  }
+
+  $scope.previousAvatar = function(ev) {
+    if($scope.indexAvatar > 0)
+    $scope.indexAvatar = $scope.indexAvatar - 1;
+  }
+
+//=======================================================
 
   //Update my profiles
   $scope.updateAlert = function(ev) {
-  
+      $scope.c_url_image = $scope.avatars[$scope.indexAvatar]['url'];
       data = {
             'username' :  $scope.c_username,
             'password' : $scope.c_password,
@@ -226,6 +266,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
   };
 
 //================================================
+
 
   //Reset button give a input box null
   $scope.reset = function(){
@@ -308,8 +349,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
       $http({
         method: 'POST',
         url: 'php/sendSticker.php',
-        data : data,
-        headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+        data : data
 
       }).then(function successCallback(response) {
         $scope.message1='';

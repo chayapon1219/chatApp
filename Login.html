@@ -81,11 +81,22 @@
         ng-keydown="$event.which === 13 && regisAlert($event)">
             <div class="md-dialog-content" flex ng-cloak >
               <center>
-              <img class="img-circle" ng-hide="url_image != ''" ng-src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="100" height="100">
+              <div ng-hide="url_image != ''">
+                  <md-button class="md-icon-button md-primary" ng-click="previousAvatar()">
+                      <md-icon md-svg-icon="svg/left.svg"></md-icon>
+                  </md-button>
+                  <img class="img-circle" ng-src="{{avatars[indexAvatar].url}}" 
+                       width="100" height="100">
+                  <md-button class="md-icon-button md-primary" ng-click="nextAvatar()">
+                      <md-icon md-svg-icon="svg/right.svg" ></md-icon>
+                  </md-button>
+              </div>
               <img class="img-circle" ng-hide="url_image == ''" ng-src="{{url_image}}" width="100" height="100">
               </center>
-
-              <md-input-container class="md-block">
+              <md-switch class="md-primary" ng-model="data.cb1" aria-label="Switch 1" style="margin-left:35px">
+                Use url image for AVATAR.
+              </md-switch>
+              <md-input-container class="md-block" ng-show="data.cb1">
                   <label>URL Image</label>
                   <input ng-model="url_image">
               </md-input-container>

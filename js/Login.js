@@ -74,12 +74,40 @@ myApp.controller('regis', function($scope, $http, $mdDialog) {
   $scope.password = '';
   $scope.name = '';
   $scope.url_image = '';
+  
+  //============================================================
+  //Choose avatars 
+  $scope.avatars = [
+    { url: 'img/avatars/0.png' },
+    { url: 'img/avatars/1.png' },
+    { url: 'img/avatars/2.png'  },
+    { url: 'img/avatars/3.png'  },
+    { url: 'img/avatars/4.png'  },
+    { url: 'img/avatars/5.png'  },
+    { url: 'img/avatars/6.png'  },
+    { url: 'img/avatars/7.png'  },
+    { url: 'img/avatars/8.png'  },
+    { url: 'img/avatars/9.png'  },
+    { url: 'img/avatars/10.png'  }
+  ];
+
+  $scope.indexAvatar = 0;
+
+  $scope.nextAvatar = function(ev) {
+    if($scope.indexAvatar < 10)
+    $scope.indexAvatar = $scope.indexAvatar + 1;
+  }
+
+  $scope.previousAvatar = function(ev) {
+    if($scope.indexAvatar > 0)
+    $scope.indexAvatar = $scope.indexAvatar - 1;
+  }
 
 //=============================================
 
   //show register dialog
   $scope.regisAlert = function(ev) {
-
+      $scope.url_image = $scope.avatars[$scope.indexAvatar]['url'];
       data = {
             'username' :  $scope.username,
             'password' : $scope.password,
@@ -135,4 +163,7 @@ myApp.controller('regis', function($scope, $http, $mdDialog) {
           };
  
 });
+
+
+//========================================================================================
 
