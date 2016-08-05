@@ -7,6 +7,7 @@ myApp.controller('login', function($scope, $http, $mdDialog) {
 
 //=============================================
 
+  //Login dialog
   $scope.loginAlert = function(ev) {
 
     data = {
@@ -52,6 +53,7 @@ myApp.controller('login', function($scope, $http, $mdDialog) {
 
 //=============================================
 
+  //Show dialog with a template
   $scope.showCustom = function(event) {
      $mdDialog.show({
         clickOutsideToClose: true,
@@ -75,6 +77,7 @@ myApp.controller('regis', function($scope, $http, $mdDialog) {
 
 //=============================================
 
+  //show register dialog
   $scope.regisAlert = function(ev) {
 
       data = {
@@ -111,6 +114,7 @@ myApp.controller('regis', function($scope, $http, $mdDialog) {
 
 //=============================================
 
+  //reset button to empry input boxs
   $scope.reset = function(){
       $scope.username = '';
       $scope.password = '';
@@ -120,6 +124,7 @@ myApp.controller('regis', function($scope, $http, $mdDialog) {
 
 //=============================================
 
+  //Show register dialog with a template
   $scope.showCustom = function(event) {
              $mdDialog.show({
                 clickOutsideToClose: true,

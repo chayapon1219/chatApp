@@ -4,7 +4,7 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
 
 
 //=================================================================
-
+     //Increase and Descrese font size 
 
     $scope.size = 16;
     $scope.fontSize = "font-size-" + $scope.size;
@@ -50,8 +50,8 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
 
 //===============================================================
 
+   //Get all messages
    $scope.lastChatId = 0;
-   data = { };
    $scope.chat = new Array();
    
    $interval(function(){
@@ -75,11 +75,11 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
   },1000);
 
 
+   //Get all users and show online point if who online.
    $interval(function(){
       $http({
-        method: 'POST',
+        method: 'GET',
         url: 'php/getUseronline.php',
-        data : data,
         headers : {'Content-Type': 'application/x-www-form-urlencoded'}
 
       }).then(function successCallback(response) {
@@ -92,10 +92,10 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
   },1000);
 
 
+    //Get my profiles
     $http({
-        method: 'POST',
+        method: 'GET',
         url: 'php/myUser.php',
-        data : data,
         headers : {'Content-Type': 'application/x-www-form-urlencoded'}
 
     }).then(function successCallback(response) {
@@ -110,12 +110,11 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
 
 //================================================
 
-   $scope.Message1 = '';
+   //Logout
    $scope.logout = function() {
       $http({
           method: 'GET',
           url: 'php/logout.php',
-          data : "",
           headers : {'Content-Type': 'application/x-www-form-urlencoded'}
 
       }).then(function successCallback(response) {
@@ -128,7 +127,8 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
 
 //================================================
 
-  message1 ='';
+  //Send Meesages
+  $scope.Message1 = '';
   $scope.addMessage1 = function() {
       data = { 
          'message' : $scope.message1
@@ -149,6 +149,7 @@ myApp.controller('jsonCtrl', function($scope, $http, $interval, $mdDialog, $mdSi
 
 //================================================
 
+  //Show dialog to update profiles
   $scope.showCustom = function(event) {
        $mdDialog.show({
           clickOutsideToClose: true,
@@ -171,17 +172,15 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
   $scope.c_name = '';
   $scope.c_url_image = ''
 
-
+  //Get all data for use to update my profile
   $http({
-      method: 'POST',
+      method: 'GET',
       url: 'php/myUser.php',
-      data : '',
       headers : {'Content-Type': 'application/x-www-form-urlencoded'}
 
       }).then(function successCallback(response) {
          console.log(response.data);
          $scope.profile = response.data;
-
          $scope.c_username = $scope.profile[0]['username'];
          $scope.c_password = '';
          $scope.c_name = $scope.profile[0]['name'];
@@ -193,6 +192,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
 
 //================================================
 
+  //Update my profiles
   $scope.updateAlert = function(ev) {
   
       data = {
@@ -227,6 +227,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
 
 //================================================
 
+  //Reset button give a input box null
   $scope.reset = function(){
       $scope.c_username = '';
       $scope.c_password = '';
@@ -236,6 +237,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
 
 //================================================
 
+  //Show dialog with a template
   $scope.showCustom = function(event) {
        $mdDialog.show({
           clickOutsideToClose: true,
@@ -253,6 +255,7 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
 
  myApp.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet, $http) {
   
+  //Show bottom sheet to send stickers
   var gridTemplate = 
   '<md-bottom-sheet class="md-grid">\
     <md-list>\
@@ -314,6 +317,6 @@ myApp.controller('update', function($scope, $http, $mdDialog) {
       },function errorCallback(response) {
       });
 
-     $mdBottomSheet.hide(clickedItem);
+      $mdBottomSheet.hide(clickedItem);
   };
 });

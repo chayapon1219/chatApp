@@ -39,38 +39,39 @@
          <md-icon md-svg-icon="svg/menu2.svg" ng-click="toggleLeft()"></md-icon>
      </md-button>
      <span flex> </span>
-     <div style="margin-top:20px; margin-right:5px;" layout="row" hide-xs>
-     <md-button class="md-icon-button md-primary" ng-click="increase()">
-          <md-icon md-svg-icon="svg/plus2.svg" ></md-icon>
-     </md-button>
-     <md-button class="md-icon-button md-primary" ng-click="decrease()">
-          <md-icon md-svg-icon="svg/minus2.svg"  </md-icon>
-     </md-button>
+     <div style="margin-top:20px; margin-right:10px;" layout="row" hide-xs>
+         <md-button class="md-icon-button md-primary" ng-click="increase()">
+              <md-icon md-svg-icon="svg/plus2.svg" ></md-icon>
+         </md-button>
+         <md-button class="md-icon-button md-primary" ng-click="decrease()">
+              <md-icon md-svg-icon="svg/minus2.svg"></md-icon>
+         </md-button>
      </div>
      <img style="margin-right:10px; margin-top:15px; border-radius: 50%;" 
           ng-src="{{my.image}}" width="40px" height="40px" >
 
      <md-menu md-position-mode="target-right target" layout="row" style="margin-right:20px; margin-top:-7px">
          <md-button class="class1" ng-click="$mdOpenMenu($event)">
-            <h3><?php session_start(); echo $_SESSION['name']; ?></h3>
+              <h3><?php session_start(); echo $_SESSION['name']; ?></h3>
          </md-button>
          <md-menu-content width="1" style="background-color: rgba(255, 255, 255, 0.9);">
-            <md-menu-item>
-                  <md-button ng-click="showCustom($event)">
-                      <md-icon md-menu-origin="" md-svg-src="svg/updateProfile.svg"></md-icon>
-                      CHANGE PROFILE
-                  </md-button>
-            </md-menu-item>
-            <md-menu-divider></md-menu-divider>
-             <md-menu-item>
-                  <md-button ng-click="logout()">
-                      <md-icon md-menu-origin="" md-svg-src="svg/logout.svg"></md-icon>
-                      LOGOUT
-                  </md-button>
-            </md-menu-item>
+              <md-menu-item>
+                    <md-button ng-click="showCustom($event)">
+                        <md-icon md-menu-origin="" md-svg-src="svg/updateProfile.svg"></md-icon>
+                        CHANGE PROFILE
+                    </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+               <md-menu-item>
+                    <md-button ng-click="logout()">
+                        <md-icon md-menu-origin="" md-svg-src="svg/logout.svg"></md-icon>
+                        LOGOUT
+                    </md-button>
+              </md-menu-item>
           </md-menu-content>
      </md-menu>
  </md-toolbar>
+
 
 
   <div flex layout="row" >   
